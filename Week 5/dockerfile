@@ -1,0 +1,16 @@
+# Use the pre-built model image
+FROM svizor/zoomcamp-model:3.11.5-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy your application code to the container
+COPY churn_app.py .  # Adjust this line if your file is in a different location
+
+# Expose the port that your app will run on
+EXPOSE 9696
+
+# Run the application using waitress
+CMD ["waitress-serve", "--host=0.0.0.0", "--port=9696", "churn_app:app"
+
+
